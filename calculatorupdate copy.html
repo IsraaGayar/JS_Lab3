@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body{
+              margin-top: 75px;
+                text-align: center;             
+            }
+            table{
+                margin: auto;
+                width: 35%;
+                height: 75vh;
+            }
+            button{
+                width: 100%;
+                height: 100%;
+                background-color: rgba(226, 226, 226, 0.267);
+            }
+            td{
+                background-color: rgba(32, 200, 206, 0.897);
+            }     
+        </style>
+
+    </head>
+ <body>
+    <table>
+     <tr>
+        <td colspan="4" > <h1 id="myScreen">0</h1> </td>
+     </tr>
+     <tr>
+        <td><button onclick="mynumber('1')"> 1  </button></td>
+        <td><button onclick="mynumber('2')"> 2  </button></td>
+        <td><button onclick="mynumber('3')"> 3  </button></td>
+        <td><button onclick="operationUsed('plus')"> + </button></td>
+     </tr>
+     <tr>
+        <td><button onclick="mynumber('4')"> 4  </button></td>
+        <td><button onclick="mynumber('5')"> 5  </button></td>
+        <td><button onclick="mynumber('6')"> 6  </button></td>
+        <td><button onclick="operationUsed('minus')"> - </button></td>
+     </tr>
+     <tr>
+        <td><button onclick="mynumber('7')"> 7  </button></td>
+        <td><button onclick="mynumber('8')"> 8  </button></td>
+        <td><button onclick="mynumber('9')"> 9  </button></td>
+        <td><button onclick="operationUsed('times')"> *  </button></td>
+     </tr>
+     <tr>
+        <td colspan="2"><button onclick="mynumber('0')"> 0  </button></td>
+        <td ><button onclick="mynumber('.')"> .  </button></td>
+        <td ><button onclick="operationUsed('divided')"> / </button></td>
+     </tr>
+     <tr>
+        <td colspan="2"><button onclick="operationUsed('reset')"> Reset</button></td>
+        <td colspan="2"><button onclick="operationUsed('equal')"> = </button></td>
+     </tr>
+    </table>
+    
+
+    <script>
+        var num=0;
+        var result=0;
+        var newnumber= true;
+        var operator="new";
+        var screenresult=0;
+    
+        function mynumber(mynum){
+
+            if(newnumber){
+                myScreen.innerHTML="";
+                newnumber=false;        
+            }     
+            myScreen.innerHTML=myScreen.innerHTML + mynum;
+        }
+        
+      
+
+        function operationUsed2(operation){         
+            switch(operation){
+                case "plus":
+                    result=result+num;
+                    screenresult =result;
+                 break;
+                case "minus":
+                    result=result-num;
+                    screenresult =result;
+                 break;
+                case "times":
+                    result=result*num;
+                    screenresult =result;
+                 break;
+                case "divided":
+                    result=result/num;
+                    screenresult =result;
+                 break;
+                case "equal":
+                    result =result;  
+                    screenresult =result;                
+                 break;
+                 case "new":
+                     result=num;                       
+                     screenresult =num;                
+                 break;
+            }
+        }
+
+        function operationUsed(operation){
+            
+        num= Number(myScreen.innerHTML);        
+        operationUsed2(operator);
+        newnumber=true;
+    
+        if (operation=="reset"){
+                num=0;
+                     result =0;   
+                     screenresult =num;
+                     operator="new";
+            }else{
+                operator=operation;
+            }   
+
+        myScreen.innerHTML =screenresult;    
+
+        }
+
+    </script>
+
+</body>
+</html>
